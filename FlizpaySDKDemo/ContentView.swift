@@ -66,7 +66,7 @@ struct ContentView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue(
-            "9aaa8134521b77a14a7d1e0db91149eca1fc47e567fb9f4b0330eaa591cded79",
+            "0413bfa6c2ec433350c5eab97ec34f8ac6ca133c83680913e3a592296eb99171",
             forHTTPHeaderField: "x-api-key"
         )
         
@@ -89,5 +89,3 @@ struct ContentView: View {
         }.resume()
     }
 }
-
-

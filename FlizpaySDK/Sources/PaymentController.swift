@@ -15,20 +15,25 @@ public class PaymentController {
         amount: String,
         onFailure: ((Error) -> Void)? = nil
     ) {
-        // 1. Call the transaction service with the token & amount.
         let transactionService = TransactionService()
         transactionService.fetchTransactionInfo(token: token, amount: amount) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let transactionResponse):
-                    // 2. Present the Flizpay web view using the redirect URL.
+                    // Unwrap the redirectUrl or use default
+                    let redirectUrl = transactionResponse.redirectUrl ?? "https://X.flizpay.de"
+                    
+                    // Just append ?token=<token> directly
+                    let redirectUrlWithJwtToken = "\(redirectUrl)&jwttoken=\(token)"
+                    print("url is", redirectUrlWithJwtToken)
+
+                    // Present the web view
                     FlizpayWebView.present(
                         from: presentingVC,
-                        redirectUrl: transactionResponse.redirectUrl ?? "https://secure.flizpay.de"
+                        redirectUrl: redirectUrlWithJwtToken
                     )
                     
                 case .failure(let error):
-                    // If the transaction call fails, let the host app handle it.
                     onFailure?(error)
                 }
             }
