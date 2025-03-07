@@ -1,6 +1,6 @@
 import UIKit
 
-public class PaymentController {
+public class FlizpaySDK {
     
     /// Initiates the payment flow within your SDK.
     ///
@@ -13,6 +13,7 @@ public class PaymentController {
         from presentingVC: UIViewController,
         token: String,
         amount: String,
+        email: String,
         onFailure: ((Error) -> Void)? = nil
     ) {
         let transactionService = TransactionService()
@@ -21,16 +22,14 @@ public class PaymentController {
                 switch result {
                 case .success(let transactionResponse):
                     // Unwrap the redirectUrl or use default
-                    let redirectUrl = transactionResponse.redirectUrl ?? "https://X.flizpay.de"
+                    let redirectUrl = transactionResponse.redirectUrl ?? Constants.baseURL
                     
-                    // Just append ?token=<token> directly
-                    let redirectUrlWithJwtToken = "\(redirectUrl)&jwttoken=\(token)"
-                    print("url is", redirectUrlWithJwtToken)
-
                     // Present the web view
-                    FlizpayWebView.present(
+                    FlizpayWebView().present(
                         from: presentingVC,
-                        redirectUrl: redirectUrlWithJwtToken
+                        redirectUrl: redirectUrl,
+                        token: token,
+                        email: email
                     )
                     
                 case .failure(let error):

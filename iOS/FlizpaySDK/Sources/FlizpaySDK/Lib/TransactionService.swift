@@ -43,7 +43,7 @@ public class TransactionService {
         amount: String,
         completion: @escaping (Result<TransactionResponse, Error>) -> Void
     ) {
-        guard let url = URL(string: "http://10.10.111.130:8080/transactions") else {
+        guard let url = URL(string: "\(Constants.apiURL)/transactions") else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
         }
