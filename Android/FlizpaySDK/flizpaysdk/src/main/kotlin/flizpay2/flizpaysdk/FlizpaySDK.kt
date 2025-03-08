@@ -17,35 +17,30 @@ object FlizpaySDK {
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
      */
     fun initiatePayment(
-            context: Context,
-            token: String,
-            amount: String,
-            email: String,
-            onFailure: ((Throwable) -> Unit)? = null
+        context: Context,
+        token: String,
+        amount: String,
+        email: String,
+        onFailure: ((Throwable) -> Unit)? = null
     ) {
         val transactionService = TransactionService()
 
         transactionService.fetchTransactionInfo(token, amount) { result ->
-            when (result) {
-                is Result.Success -> {
-                    val redirectUrl = result.data.redirectUrl ?: Constants.BASE_URL
+            if(result.isSuccess) {
+                val redirectUrl = result.getOrNull()?.redirectUrl ?: Constants.BASE_URL
 
-                    if (context is AppCompatActivity) {
-                        WebViewService()
-                                .present(
-                                        context = context,
-                                        redirectUrl = redirectUrl,
-                                        token = token,
-                                        email = email
-                                )
-                    }
+                if (context is AppCompatActivity) {
+                    WebViewService()
+                        .present(
+                                context = context,
+                                redirectUrl = redirectUrl,
+                                token = token,
+                                email = email
+                        )
                 }
-                is Result.Failure -> {
-                    onFailure?.invoke(result.exception)
-                }
-            } else {
-                onFailure?.invoke(IllegalStateException("Invalid result type"))
-            }
+            } else
+                onFailure?.invoke(result.exceptionOrNull() ?: Throwable("Unknown Result"))
+
         }
     }
 }

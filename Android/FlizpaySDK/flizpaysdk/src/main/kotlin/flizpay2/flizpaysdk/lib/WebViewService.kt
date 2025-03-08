@@ -1,5 +1,6 @@
 package flizpay2.flizpaysdk.lib
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -39,6 +40,7 @@ class WebViewService : AppCompatActivity() {
         webView?.loadUrl(redirectUrlWithJwtToken)
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun setupWebView() {
         webView?.apply {
             settings.javaScriptEnabled = true

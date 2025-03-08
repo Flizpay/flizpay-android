@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName
 import okhttp3.*
 import java.io.IOException
 
+import flizpay2.flizpaysdk.Constants
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+
 // TransactionResponse decodes the nested "redirectUrl" from within the "data" object.
 data class TransactionResponse(
     @SerializedName("redirectUrl") val redirectUrl: String?
@@ -33,7 +36,7 @@ class TransactionService {
     ) {
         val url = "${Constants.API_URL}/transactions"
         val requestBody = RequestBody.create(
-            MediaType.parse("application/json"),
+            "application/json".toMediaTypeOrNull(),
             gson.toJson(TransactionRequest(amount))
         )
 
@@ -56,7 +59,7 @@ class TransactionService {
                         return
                     }
                     
-                    val jsonResponse = it.body()?.string()
+                    val jsonResponse = it.body?.string()
                     Log.d("TransactionService", "Raw response JSON: $jsonResponse")
                     
                     try {
