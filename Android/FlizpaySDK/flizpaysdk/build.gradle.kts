@@ -35,13 +35,16 @@ dependencies {
     // This dependency is used internally, and not exposed to consumers on their own compile
     // classpath.
     implementation(libs.guava)
+
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.activity:activity-ktx:1.8.2")
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
-java { 
-    toolchain {
-         languageVersion = JavaLanguageVersion.of(21) 
-    }
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(21) }
     withSourcesJar()
 }
 
@@ -52,7 +55,11 @@ tasks.named<Test>("test") {
 
 tasks.jar {
     manifest {
-        attributes(mapOf("Implementation-Title" to project.name,
-                         "Implementation-Version" to project.version))
+        attributes(
+                mapOf(
+                        "Implementation-Title" to project.name,
+                        "Implementation-Version" to project.version
+                )
+        )
     }
 }
