@@ -9,6 +9,7 @@ import java.io.IOException
 
 import flizpay2.flizpaysdk.Constants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
 
 // TransactionResponse decodes the nested "redirectUrl" from within the "data" object.
 data class TransactionResponse(
@@ -35,10 +36,8 @@ class TransactionService {
         completion: (Result<TransactionResponse>) -> Unit
     ) {
         val url = "${Constants.API_URL}/transactions"
-        val requestBody = RequestBody.create(
-            "application/json".toMediaTypeOrNull(),
-            gson.toJson(TransactionRequest(amount))
-        )
+        val requestBody = gson.toJson(TransactionRequest(amount))
+            .toRequestBody("application/json".toMediaTypeOrNull())
 
         val request = Request.Builder()
             .url(url)
