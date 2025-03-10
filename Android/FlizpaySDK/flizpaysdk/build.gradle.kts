@@ -13,9 +13,6 @@ android {
 
     defaultConfig {
         minSdk = 21
-        testOptions {
-            targetSdk = 34
-        }
     }
 
     compileOptions {
@@ -39,6 +36,9 @@ dependencies {
     implementation(libs.fragment.ktx)
     implementation(libs.gson.v2110)
     implementation (libs.okhttp)
+    implementation(libs.security.crypto)
+
+
 
 
     testImplementation(libs.kotlin.test.junit5)
