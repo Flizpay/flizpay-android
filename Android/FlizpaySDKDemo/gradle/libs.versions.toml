@@ -23,6 +23,7 @@ activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activ
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 material = { module = "androidx.compose.material:material", version.ref = "material" }
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
