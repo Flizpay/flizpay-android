@@ -13,7 +13,6 @@ public class FlizpaySDK {
         from presentingVC: UIViewController,
         token: String,
         amount: String,
-        email: String,
         onFailure: ((Error) -> Void)? = nil
     ) {
         let transactionService = TransactionService()
@@ -28,8 +27,7 @@ public class FlizpaySDK {
                     FlizpayWebView().present(
                         from: presentingVC,
                         redirectUrl: redirectUrl,
-                        token: token,
-                        email: email
+                        jwt: token
                     )
                     
                 case .failure(let error):
