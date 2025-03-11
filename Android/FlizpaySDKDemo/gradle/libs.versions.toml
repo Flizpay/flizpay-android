@@ -6,12 +6,14 @@ activity-ktx = "1.8.2"
 appcompat = "1.6.1"
 compiler = "1.5.8"
 core-ktx = "1.12.0"
+gson = "2.11.0"
 guava = "33.3.1-jre"
 junit-jupiter-engine = "5.11.3"
 flizpaysdk = "0.0.1"
 material = "1.6.3"
 material3 = "1.2.1"
 okhttp = "4.12.0"
+security-crypto = "1.1.0-alpha06"
 ui = "1.6.3"
 lifecycle-runtime-ktx = "2.6.1"
 compose-bom = "2024.04.01"
@@ -22,11 +24,13 @@ activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activ
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compiler" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
 material = { module = "androidx.compose.material:material", version.ref = "material" }
 material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+security-crypto = { module = "androidx.security:security-crypto", version.ref = "security-crypto" }
 ui = { module = "androidx.compose.ui:ui", version.ref = "ui" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "ui" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
