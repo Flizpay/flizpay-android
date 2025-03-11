@@ -45,3 +45,15 @@ dependencies {
     testImplementation(libs.jupiter.junit.jupiter.engine)
     testRuntimeOnly(libs.junit.platform.launcher)
 }
+
+task<Delete>("clearJar") {
+    delete("build/libs/FlizpaySDK.jar")
+}
+
+task<Copy>("makeJar") {
+    from("build/intermediates/aar_main_jar/release/syncReleaseLibJars/", "build/intermediates/full_jar/debug/createFullJarDebug")
+    into("build/libs/")
+    include("classes.jar")
+    rename { _: String -> "FlizpaySDK.jar" }
+    dependsOn("clearJar", "build")
+}
