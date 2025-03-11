@@ -22,13 +22,12 @@ public class FlizpayWebView: UIViewController, WKScriptMessageHandler {
     public func present(
         from presentingVC: UIViewController,
         redirectUrl: String,
-        token: String,
-        email: String
+        jwt: String
     ) {
         let flizpayWebView = FlizpayWebView()
         
         // Build the full URL
-        let redirectUrlWithJwtToken = "\(redirectUrl)&jwt=\(token)&email=\(email)"
+        let redirectUrlWithJwtToken = "\(redirectUrl)&jwt=\(jwt)"
         print("url is", redirectUrlWithJwtToken)
         
         // Store the URL in the new instance
