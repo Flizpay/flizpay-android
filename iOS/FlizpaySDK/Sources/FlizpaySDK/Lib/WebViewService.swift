@@ -2,46 +2,45 @@ import UIKit
 import WebKit
 
 public class FlizpayWebView: UIViewController, WKScriptMessageHandler {
-    // Public properties so they can be set before presenting
-    public var redirectUrl: URL? = URL(string: "");
+    
+    public var redirectUrl: URL?
     private var webView: WKWebView?
     
     // MARK: - Life Cycle
     public override func viewDidLoad() {
-        super.viewDidLoad();
-        setupWebView();
+        super.viewDidLoad()
+        setupWebView()
+        
+        // Now that the webView is created, load the URL (if any)
+        if let url = redirectUrl {
+            let request = URLRequest(url: url)
+            webView?.load(request)
+        }
     }
     
     // MARK: - Public API
-    
-    /// Presents the Flizpay web view modally using a redirect URL.
-    /// - Parameters:
-    ///   - presentingVC: The UIViewController from which to present the web view.
-    ///   - redirectUrl: The URL to which the web view should navigate.
     public func present(
         from presentingVC: UIViewController,
         redirectUrl: String,
         token: String,
         email: String
     ) {
-        let flizpayWebView = FlizpayWebView();
-        // Just append & token & email directly
-        let redirectUrlWithJwtToken = "\(redirectUrl)&jwttoken=\(token)&email=\(email)"
+        let flizpayWebView = FlizpayWebView()
+        
+        // Build the full URL
+        let redirectUrlWithJwtToken = "\(redirectUrl)&jwt=\(token)&email=\(email)"
         print("url is", redirectUrlWithJwtToken)
-        // Add the url to the webview
-        flizpayWebView.redirectUrl = URL(string: redirectUrlWithJwtToken);
-        // Load the url in the webview
-        webView?.load(URLRequest(url: flizpayWebView.redirectUrl!));
-        // Present the webview in the current controller
+        
+        // Store the URL in the new instance
+        flizpayWebView.redirectUrl = URL(string: redirectUrlWithJwtToken)
+        
+        // Present the new instance
         presentingVC.present(flizpayWebView, animated: true, completion: nil)
     }
     
     // MARK: - Setup Methods
     private func setupWebView() {
         let config = WKWebViewConfiguration()
-        // If needed for JS messages, uncomment the next line:
-        // config.userContentController.add(self, name: "sdkHandler")
-        
         let wv = WKWebView(frame: .zero, configuration: config)
         wv.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(wv)
@@ -59,6 +58,6 @@ public class FlizpayWebView: UIViewController, WKScriptMessageHandler {
     // MARK: - WKScriptMessageHandler
     public func userContentController(_ userContentController: WKUserContentController,
                                       didReceive message: WKScriptMessage) {
-        // Handle JavaScript messages if needed.
+        // Handle JS messages if needed
     }
 }
