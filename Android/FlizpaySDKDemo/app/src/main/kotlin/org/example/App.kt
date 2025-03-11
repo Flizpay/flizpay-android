@@ -1,9 +1,10 @@
 package org.example
 
-import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -12,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import flizpay2.flizpaysdk.FlizpaySDK
+import flizpay2.flizpaysdk.lib.WebViewService
 import kotlinx.coroutines.*
 import okhttp3.*
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -30,8 +32,8 @@ class App : ComponentActivity() {
 
 @Composable
 fun FlizpayPaymentScreen(context: ComponentActivity) {
-    val backendURL = "http://192.168.2.34"
-    val testApiKey = "0413bfa6c2ec433350c5eab97ec34f8ac6ca133c83680913e3a592296eb99171"
+    val backendURL = "http://192.168.2.34:8080"
+    val testApiKey = "81d43faf756b3ad02f6eb2f4d193c92c8e9f8624522005035c48a9b740e5abd1"
 
     var userAmount by remember { mutableStateOf("") }
     var userEmail by remember { mutableStateOf("") }
@@ -110,14 +112,11 @@ private suspend fun fetchToken(backendURL: String, testApiKey: String): String? 
 }
 
 private fun launchPayment(context: ComponentActivity, token: String, amount: String, email: String) {
-    context.currentFocus?.let {
-        FlizpaySDK.initiatePayment(
-            context,
-            token,
-            amount,
-            email
-        ) { error ->
-            println("Payment failed: ${error.message}")
-        }
-    }
+    FlizpaySDK.initiatePayment(
+        context,
+        token,
+        amount,
+        email,
+        keychainAccessKey = "key-for-keychain"
+    )
 }
