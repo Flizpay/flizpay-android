@@ -29,6 +29,8 @@ struct ContentView: View {
     @State private var userAmount: String = ""
     /// User's email address for the payment flow.
     @State private var userEmail: String = ""
+    /// User's IBAN for the payment flow.
+    @State private var userIban: String = ""
     
     // MARK: - Body
     
@@ -49,9 +51,16 @@ struct ContentView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
+            // A TextField for the user to enter their IBAN.
+            TextField("Enter IBAN", text: $userIban)
+                .autocapitalization(.none)
+                .disableAutocorrection(true)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
             // A button to trigger the payment flow.
             Button("Pay with Fliz") {
-                // 1. Fetch the token from the backend, including the email in the request body.
+                // 1. Fetch the token from the backend, including the email and IBAN in the request body.
                 fetchToken { token in
                     guard let token = token else {
                         print("Failed to fetch token")
@@ -82,7 +91,7 @@ struct ContentView: View {
     
     // MARK: - Networking
     
-    /// Calls your backend to fetch the JWT token, passing `email` in the request body.
+    /// Calls your backend to fetch the JWT token, passing `payerEmail` and `payerIban` in the request body.
     private func fetchToken(completion: @escaping (String?) -> Void) {
         guard let url = URL(string: verifyApiKeyURLString) else {
             completion(nil)
@@ -96,9 +105,10 @@ struct ContentView: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(flizpayApiKey, forHTTPHeaderField: "x-api-key")
         
-        // Include `email` in the request body.
+        // Include payerEmail and payerIban in the request body.
         let requestBody: [String: Any] = [
-            "email": userEmail
+            "payerEmail": userEmail,
+            "payerIban": userIban
         ]
         
         // Convert the dictionary to JSON data.
