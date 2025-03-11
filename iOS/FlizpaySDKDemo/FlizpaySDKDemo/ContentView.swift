@@ -105,10 +105,10 @@ struct ContentView: View {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(flizpayApiKey, forHTTPHeaderField: "x-api-key")
         
-        // Include payerEmail and payerIban in the request body.
+        // Include email and iban in the request body.
         let requestBody: [String: Any] = [
-            "payerEmail": userEmail,
-            "payerIban": userIban
+            "email": userEmail,
+            "iban": userIban
         ]
         
         // Convert the dictionary to JSON data.
