@@ -1,0 +1,624 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		612D0DC02D8072FB009F5205 /* FlizpaySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 612D0DBF2D8072FB009F5205 /* FlizpaySDK */; };
+		61427ACF2D807270004D693F /* FlizpaySDKDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427ACE2D807270004D693F /* FlizpaySDKDemoApp.swift */; };
+		61427AD12D807270004D693F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427AD02D807270004D693F /* ContentView.swift */; };
+		61427AD32D807270004D693F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61427AD22D807270004D693F /* Assets.xcassets */; };
+		61427AD62D807270004D693F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61427AD52D807270004D693F /* Preview Assets.xcassets */; };
+		61427AE02D807271004D693F /* FlizpaySDKDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427ADF2D807271004D693F /* FlizpaySDKDemoTests.swift */; };
+		61427AEA2D807271004D693F /* FlizpaySDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427AE92D807271004D693F /* FlizpaySDKDemoUITests.swift */; };
+		61427AEC2D807271004D693F /* FlizpaySDKDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427AEB2D807271004D693F /* FlizpaySDKDemoUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		61427ADC2D807271004D693F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61427AC32D807270004D693F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61427ACA2D807270004D693F;
+			remoteInfo = FlizpaySDKDemo;
+		};
+		61427AE62D807271004D693F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61427AC32D807270004D693F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61427ACA2D807270004D693F;
+			remoteInfo = FlizpaySDKDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		61427ACB2D807270004D693F /* FlizpaySDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlizpaySDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61427ACE2D807270004D693F /* FlizpaySDKDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlizpaySDKDemoApp.swift; sourceTree = "<group>"; };
+		61427AD02D807270004D693F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		61427AD22D807270004D693F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61427AD52D807270004D693F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		61427ADB2D807271004D693F /* FlizpaySDKDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlizpaySDKDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61427ADF2D807271004D693F /* FlizpaySDKDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlizpaySDKDemoTests.swift; sourceTree = "<group>"; };
+		61427AE52D807271004D693F /* FlizpaySDKDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlizpaySDKDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61427AE92D807271004D693F /* FlizpaySDKDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlizpaySDKDemoUITests.swift; sourceTree = "<group>"; };
+		61427AEB2D807271004D693F /* FlizpaySDKDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlizpaySDKDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61427AC82D807270004D693F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				612D0DC02D8072FB009F5205 /* FlizpaySDK in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61427AD82D807271004D693F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61427AE22D807271004D693F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		612D0DBE2D8072FB009F5205 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61427AC22D807270004D693F = {
+			isa = PBXGroup;
+			children = (
+				61427ACD2D807270004D693F /* FlizpaySDKDemo */,
+				61427ADE2D807271004D693F /* FlizpaySDKDemoTests */,
+				61427AE82D807271004D693F /* FlizpaySDKDemoUITests */,
+				61427ACC2D807270004D693F /* Products */,
+				612D0DBE2D8072FB009F5205 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		61427ACC2D807270004D693F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61427ACB2D807270004D693F /* FlizpaySDKDemo.app */,
+				61427ADB2D807271004D693F /* FlizpaySDKDemoTests.xctest */,
+				61427AE52D807271004D693F /* FlizpaySDKDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61427ACD2D807270004D693F /* FlizpaySDKDemo */ = {
+			isa = PBXGroup;
+			children = (
+				61427ACE2D807270004D693F /* FlizpaySDKDemoApp.swift */,
+				61427AD02D807270004D693F /* ContentView.swift */,
+				61427AD22D807270004D693F /* Assets.xcassets */,
+				61427AD42D807270004D693F /* Preview Content */,
+			);
+			path = FlizpaySDKDemo;
+			sourceTree = "<group>";
+		};
+		61427AD42D807270004D693F /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				61427AD52D807270004D693F /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		61427ADE2D807271004D693F /* FlizpaySDKDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				61427ADF2D807271004D693F /* FlizpaySDKDemoTests.swift */,
+			);
+			path = FlizpaySDKDemoTests;
+			sourceTree = "<group>";
+		};
+		61427AE82D807271004D693F /* FlizpaySDKDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				61427AE92D807271004D693F /* FlizpaySDKDemoUITests.swift */,
+				61427AEB2D807271004D693F /* FlizpaySDKDemoUITestsLaunchTests.swift */,
+			);
+			path = FlizpaySDKDemoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61427ACA2D807270004D693F /* FlizpaySDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61427AEF2D807271004D693F /* Build configuration list for PBXNativeTarget "FlizpaySDKDemo" */;
+			buildPhases = (
+				61427AC72D807270004D693F /* Sources */,
+				61427AC82D807270004D693F /* Frameworks */,
+				61427AC92D807270004D693F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlizpaySDKDemo;
+			packageProductDependencies = (
+				612D0DBF2D8072FB009F5205 /* FlizpaySDK */,
+			);
+			productName = FlizpaySDKDemo;
+			productReference = 61427ACB2D807270004D693F /* FlizpaySDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61427ADA2D807271004D693F /* FlizpaySDKDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61427AF22D807271004D693F /* Build configuration list for PBXNativeTarget "FlizpaySDKDemoTests" */;
+			buildPhases = (
+				61427AD72D807271004D693F /* Sources */,
+				61427AD82D807271004D693F /* Frameworks */,
+				61427AD92D807271004D693F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61427ADD2D807271004D693F /* PBXTargetDependency */,
+			);
+			name = FlizpaySDKDemoTests;
+			productName = FlizpaySDKDemoTests;
+			productReference = 61427ADB2D807271004D693F /* FlizpaySDKDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		61427AE42D807271004D693F /* FlizpaySDKDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61427AF52D807271004D693F /* Build configuration list for PBXNativeTarget "FlizpaySDKDemoUITests" */;
+			buildPhases = (
+				61427AE12D807271004D693F /* Sources */,
+				61427AE22D807271004D693F /* Frameworks */,
+				61427AE32D807271004D693F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61427AE72D807271004D693F /* PBXTargetDependency */,
+			);
+			name = FlizpaySDKDemoUITests;
+			productName = FlizpaySDKDemoUITests;
+			productReference = 61427AE52D807271004D693F /* FlizpaySDKDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61427AC32D807270004D693F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					61427ACA2D807270004D693F = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					61427ADA2D807271004D693F = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 61427ACA2D807270004D693F;
+					};
+					61427AE42D807271004D693F = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 61427ACA2D807270004D693F;
+					};
+				};
+			};
+			buildConfigurationList = 61427AC62D807270004D693F /* Build configuration list for PBXProject "FlizpaySDKDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61427AC22D807270004D693F;
+			packageReferences = (
+				61427AF82D8072A8004D693F /* XCLocalSwiftPackageReference "../FlizpaySDK" */,
+			);
+			productRefGroup = 61427ACC2D807270004D693F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61427ACA2D807270004D693F /* FlizpaySDKDemo */,
+				61427ADA2D807271004D693F /* FlizpaySDKDemoTests */,
+				61427AE42D807271004D693F /* FlizpaySDKDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61427AC92D807270004D693F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61427AD62D807270004D693F /* Preview Assets.xcassets in Resources */,
+				61427AD32D807270004D693F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61427AD92D807271004D693F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61427AE32D807271004D693F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61427AC72D807270004D693F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61427AD12D807270004D693F /* ContentView.swift in Sources */,
+				61427ACF2D807270004D693F /* FlizpaySDKDemoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61427AD72D807271004D693F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61427AE02D807271004D693F /* FlizpaySDKDemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61427AE12D807271004D693F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61427AEC2D807271004D693F /* FlizpaySDKDemoUITestsLaunchTests.swift in Sources */,
+				61427AEA2D807271004D693F /* FlizpaySDKDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		61427ADD2D807271004D693F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61427ACA2D807270004D693F /* FlizpaySDKDemo */;
+			targetProxy = 61427ADC2D807271004D693F /* PBXContainerItemProxy */;
+		};
+		61427AE72D807271004D693F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61427ACA2D807270004D693F /* FlizpaySDKDemo */;
+			targetProxy = 61427AE62D807271004D693F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		61427AED2D807271004D693F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		61427AEE2D807271004D693F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61427AF02D807271004D693F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlizpaySDKDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 3RP6AWKF36;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flizpay.FlizpaySDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		61427AF12D807271004D693F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FlizpaySDKDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 3RP6AWKF36;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flizpay.FlizpaySDKDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		61427AF32D807271004D693F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RP6AWKF36;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flizpay.FlizpaySDKDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlizpaySDKDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlizpaySDKDemo";
+			};
+			name = Debug;
+		};
+		61427AF42D807271004D693F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RP6AWKF36;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flizpay.FlizpaySDKDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FlizpaySDKDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FlizpaySDKDemo";
+			};
+			name = Release;
+		};
+		61427AF62D807271004D693F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RP6AWKF36;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flizpay.FlizpaySDKDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FlizpaySDKDemo;
+			};
+			name = Debug;
+		};
+		61427AF72D807271004D693F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3RP6AWKF36;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.flizpay.FlizpaySDKDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FlizpaySDKDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61427AC62D807270004D693F /* Build configuration list for PBXProject "FlizpaySDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61427AED2D807271004D693F /* Debug */,
+				61427AEE2D807271004D693F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61427AEF2D807271004D693F /* Build configuration list for PBXNativeTarget "FlizpaySDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61427AF02D807271004D693F /* Debug */,
+				61427AF12D807271004D693F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61427AF22D807271004D693F /* Build configuration list for PBXNativeTarget "FlizpaySDKDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61427AF32D807271004D693F /* Debug */,
+				61427AF42D807271004D693F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61427AF52D807271004D693F /* Build configuration list for PBXNativeTarget "FlizpaySDKDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61427AF62D807271004D693F /* Debug */,
+				61427AF72D807271004D693F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		61427AF82D8072A8004D693F /* XCLocalSwiftPackageReference "../FlizpaySDK" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../FlizpaySDK;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		612D0DBF2D8072FB009F5205 /* FlizpaySDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 61427AF82D8072A8004D693F /* XCLocalSwiftPackageReference "../FlizpaySDK" */;
+			productName = FlizpaySDK;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 61427AC32D807270004D693F /* Project object */;
+}
