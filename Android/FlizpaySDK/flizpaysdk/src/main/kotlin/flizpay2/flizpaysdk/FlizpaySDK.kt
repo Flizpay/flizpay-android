@@ -15,7 +15,6 @@ object FlizpaySDK {
      * @param context The Context from which to launch the payment WebView.
      * @param token The JWT token fetched by the host app.
      * @param amount The transaction amount.
-     * @param email The user's email for the transaction.
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
      * @param keychainAccessKey Optional access key for storing and retrieving bank credentials from the device keychain
      */
@@ -23,7 +22,6 @@ object FlizpaySDK {
         context: Context,
         token: String,
         amount: String,
-        email: String,
         onFailure: ((Throwable) -> Unit)? = null,
         keychainAccessKey: String?
     ) {
@@ -38,7 +36,6 @@ object FlizpaySDK {
                 val intent = Intent(context, WebViewService::class.java).apply {
                     putExtra("redirectUrl", redirectUrl)
                     putExtra("token", token)
-                    putExtra("email", email)
                     putExtra("keychainAccessKey", keychainAccessKey)
                 }
 
