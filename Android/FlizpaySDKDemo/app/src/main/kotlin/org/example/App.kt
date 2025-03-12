@@ -3,11 +3,13 @@ package org.example
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import flizpay2.flizpaysdk.FlizpaySDK
@@ -31,7 +33,7 @@ class App : ComponentActivity() {
 @Composable
 fun FlizpayPaymentScreen(context: ComponentActivity) {
     // Put your API Key here, plus the API KEY shall be stored safely
-    val backendURL = "https://api-staging.flizpay.de"
+    val backendURL = "http://192.168.2.34:8080"
     val testApiKey = "81d43faf756b3ad02f6eb2f4d193c92c8e9f8624522005035c48a9b740e5abd1"
 
     var userAmount by remember { mutableStateOf("") }
@@ -45,6 +47,10 @@ fun FlizpayPaymentScreen(context: ComponentActivity) {
             .padding(16.dp),
         verticalArrangement = Arrangement.Center
     ) {
+        Text("Company X Nice APP")
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         OutlinedTextField(
             value = userAmount,
             onValueChange = { userAmount = it },
@@ -87,7 +93,7 @@ fun FlizpayPaymentScreen(context: ComponentActivity) {
                     }
                 }
             },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().background(Color.Green)
         ) {
             Text("Pay with Fliz")
         }
