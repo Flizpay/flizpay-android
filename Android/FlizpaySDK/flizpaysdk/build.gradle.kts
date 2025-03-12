@@ -13,9 +13,6 @@ android {
 
     defaultConfig {
         minSdk = 21
-        testOptions {
-            targetSdk = 34
-        }
     }
 
     compileOptions {
@@ -37,11 +34,25 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.activity.ktx)
     implementation(libs.fragment.ktx)
-    implementation(libs.gson.v2110)
     implementation (libs.okhttp)
+    implementation(libs.security.crypto)
+
+
 
 
     testImplementation(libs.kotlin.test.junit5)
     testImplementation(libs.jupiter.junit.jupiter.engine)
     testRuntimeOnly(libs.junit.platform.launcher)
+}
+
+task<Delete>("clearJar") {
+    delete("build/libs/FlizpaySDK.jar")
+}
+
+task<Copy>("makeJar") {
+    from("build/intermediates/aar_main_jar/release/syncReleaseLibJars/", "build/intermediates/full_jar/debug/createFullJarDebug")
+    into("build/libs/")
+    include("classes.jar")
+    rename { _: String -> "FlizpaySDK.jar" }
+    dependsOn("clearJar", "build")
 }
