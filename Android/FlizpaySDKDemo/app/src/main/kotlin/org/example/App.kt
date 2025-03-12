@@ -3,7 +3,6 @@ package org.example
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -93,7 +92,11 @@ fun FlizpayPaymentScreen(context: ComponentActivity) {
                     }
                 }
             },
-            modifier = Modifier.fillMaxWidth().background(Color.Green)
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color.Green,
+                contentColor = Color.Blue
+            ),
+            modifier = Modifier.fillMaxWidth()
         ) {
             Text("Pay with Fliz")
         }
@@ -138,7 +141,6 @@ private fun launchPayment(context: ComponentActivity, token: String, amount: Str
         context,
         token,
         amount,
-        email,
         keychainAccessKey = "key-for-keychain"
     )
 }
