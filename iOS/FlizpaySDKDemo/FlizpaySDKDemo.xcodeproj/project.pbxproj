@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		612D0DC02D8072FB009F5205 /* FlizpaySDK in Frameworks */ = {isa = PBXBuildFile; productRef = 612D0DBF2D8072FB009F5205 /* FlizpaySDK */; };
 		61427ACF2D807270004D693F /* FlizpaySDKDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427ACE2D807270004D693F /* FlizpaySDKDemoApp.swift */; };
 		61427AD12D807270004D693F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427AD02D807270004D693F /* ContentView.swift */; };
 		61427AD32D807270004D693F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61427AD22D807270004D693F /* Assets.xcassets */; };
@@ -15,6 +14,7 @@
 		61427AE02D807271004D693F /* FlizpaySDKDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427ADF2D807271004D693F /* FlizpaySDKDemoTests.swift */; };
 		61427AEA2D807271004D693F /* FlizpaySDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427AE92D807271004D693F /* FlizpaySDKDemoUITests.swift */; };
 		61427AEC2D807271004D693F /* FlizpaySDKDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61427AEB2D807271004D693F /* FlizpaySDKDemoUITestsLaunchTests.swift */; };
+		CAE680142D80A75200972449 /* FlizpaySDK in Frameworks */ = {isa = PBXBuildFile; productRef = CAE680132D80A75200972449 /* FlizpaySDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612D0DC02D8072FB009F5205 /* FlizpaySDK in Frameworks */,
+				CAE680142D80A75200972449 /* FlizpaySDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +154,7 @@
 			);
 			name = FlizpaySDKDemo;
 			packageProductDependencies = (
-				612D0DBF2D8072FB009F5205 /* FlizpaySDK */,
+				CAE680132D80A75200972449 /* FlizpaySDK */,
 			);
 			productName = FlizpaySDKDemo;
 			productReference = 61427ACB2D807270004D693F /* FlizpaySDKDemo.app */;
@@ -613,7 +613,7 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		612D0DBF2D8072FB009F5205 /* FlizpaySDK */ = {
+		CAE680132D80A75200972449 /* FlizpaySDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 61427AF82D8072A8004D693F /* XCLocalSwiftPackageReference "../FlizpaySDK" */;
 			productName = FlizpaySDK;
