@@ -38,7 +38,6 @@ android {
 
 dependencies {
     // This dependency is used by the application.
-    implementation(libs.guava)
     implementation(files("../../FlizpaySDK/flizpaysdk/build/libs/FlizpaySDK.jar"))
     implementation(libs.appcompat)
     implementation(libs.core.ktx)
@@ -53,7 +52,6 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.ui.tooling.preview)
     implementation(libs.activity.compose)
-    implementation(libs.gson)
     implementation(libs.security.crypto)
 
     // ✅ Compose Compiler (ensure compatibility)

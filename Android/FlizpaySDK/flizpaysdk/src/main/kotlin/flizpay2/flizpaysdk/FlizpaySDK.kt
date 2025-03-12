@@ -31,7 +31,7 @@ object FlizpaySDK {
 
         transactionService.fetchTransactionInfo(token, amount) { result ->
             if(result.isSuccess) {
-                val redirectUrl = result.getOrNull()?.redirectUrl ?: Constants.BASE_URL
+                val redirectUrl = result.getOrNull() ?: Constants.BASE_URL
 
                 println("Trying to start webview")
 

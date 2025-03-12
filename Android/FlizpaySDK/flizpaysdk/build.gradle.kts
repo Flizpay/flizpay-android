@@ -34,7 +34,6 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.activity.ktx)
     implementation(libs.fragment.ktx)
-    implementation(libs.gson.v2110)
     implementation (libs.okhttp)
     implementation(libs.security.crypto)
 
