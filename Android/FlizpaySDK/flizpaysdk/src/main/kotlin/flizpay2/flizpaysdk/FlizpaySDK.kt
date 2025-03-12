@@ -31,7 +31,7 @@ object FlizpaySDK {
             if(result.isSuccess) {
                 val redirectUrl = result.getOrNull() ?: Constants.BASE_URL
 
-                println("Trying to start webview")
+                println("Starting FLIZ webview")
 
                 val intent = Intent(context, WebViewService::class.java).apply {
                     putExtra("redirectUrl", redirectUrl)
