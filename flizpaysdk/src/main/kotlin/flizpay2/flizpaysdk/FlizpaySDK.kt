@@ -16,14 +16,12 @@ object FlizpaySDK {
      * @param token The JWT token fetched by the host app.
      * @param amount The transaction amount.
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
-     * @param keychainAccessKey Optional access key for storing and retrieving bank credentials from the device keychain
      */
     fun initiatePayment(
         context: Context,
         token: String,
         amount: String,
         onFailure: ((Throwable) -> Unit)? = null,
-        keychainAccessKey: String?
     ) {
         val transactionService = TransactionService()
 
@@ -31,24 +29,20 @@ object FlizpaySDK {
             if(result.isSuccess) {
                 val redirectUrl = result.getOrNull() ?: Constants.BASE_URL
 
-                println("Starting FLIZ webview")
-
                 val intent = Intent(context, WebViewService::class.java).apply {
                     putExtra("redirectUrl", redirectUrl)
                     putExtra("token", token)
-                    putExtra("keychainAccessKey", keychainAccessKey)
                 }
 
                 // Ensure it's an activity context
                 if (context !is AppCompatActivity) {
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)  // Needed for non-Activity context
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }
 
                 context.startActivity(intent)
             } else {
                 val error = result.exceptionOrNull()?.message ?: "Unknown error"
-                println("TransactionService failed: $error")
-                onFailure?.invoke(result.exceptionOrNull() ?: Throwable("Unknown Result"))
+                onFailure?.invoke(result.exceptionOrNull() ?: Throwable(error))
             }
         }
     }
