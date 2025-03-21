@@ -4,6 +4,7 @@
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.0-purple)](https://kotlinlang.org/)
 [![Gradle Compatible](https://img.shields.io/badge/Gradle-compatible-brightgreen)](https://gradle.org/)
 [![Version](https://img.shields.io/github/v/tag/flizpay/flizpay-android)](https://github.com/flizpay/flizpay-android/releases)
+[![](https://jitpack.io/v/flizpay/flizpay-android.svg)](https://jitpack.io/#flizpay/flizpay-android)
 [![License](https://img.shields.io/github/license/flizpay/flizpay-android)](LICENSE)
 
 
