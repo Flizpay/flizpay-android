@@ -3,8 +3,8 @@
 [![Platform](https://img.shields.io/badge/platform-Android-green)](https://developer.android.com/)
 [![Kotlin](https://img.shields.io/badge/kotlin-1.9.0-purple)](https://kotlinlang.org/)
 [![Gradle Compatible](https://img.shields.io/badge/Gradle-compatible-brightgreen)](https://gradle.org/)
-[![Version](https://img.shields.io/github/v/tag/yourusername/FLIZpayAndroidSDK)](https://github.com/yourusername/FLIZpayAndroidSDK/releases)
-[![License](https://img.shields.io/github/license/yourusername/FLIZpayAndroidSDK)](LICENSE)
+[![Version](https://img.shields.io/github/v/tag/flizpay/flizpay-android)](https://github.com/flizpay/flizpay-android/releases)
+[![License](https://img.shields.io/github/license/flizpay/flizpay-android)](LICENSE)
 
 
 Welcome to the FLIZpay Android SDK! Easily integrate secure, seamless, and user-friendly payments directly into your Android app.
@@ -25,16 +25,21 @@ The FLIZpay Android SDK requires Android 7 or later and is compatible with apps 
 
 After installing the SDK, initiate payments effortlessly:
 
-```swift
-import FlizpaySDK
+```kotlin
+import com.github.flizpay.FlizpaySDK
 
-FlizpaySDK.initiatePayment(amount: "49.99", token: "YOUR_JWT_TOKEN")
+FlizpaySDK.initiatePayment(
+        context,
+        token,
+        amount,
+    )
 ```
 
 ### Parameters
-
+- **`context`** (`ComponentActivity`, required): The activity of which to launch the webview from
 - **`amount`** (`String`, required): The payment amount.
-- **`token`** (`String`, optional): JWT authentication token obtained from your backend.
+- **`token`** (`String`, required): JWT authentication token obtained from your backend.
+- **`onFailure`** (`((Throwable) -> Unit)`, optional): Callback to be executed on failure
 
 ---
 
