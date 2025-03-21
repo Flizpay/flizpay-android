@@ -1,18 +1,26 @@
-version = "0.0.1"
-
+version = "0.1.0"
 group = "com.flizpay2"
 
 plugins {
     id("com.android.library") version "8.7.3"
     id("org.jetbrains.kotlin.android") version "1.8.0"
+    id("maven-publish")
 }
 
 android {
     namespace = "com.flizpay2"
     compileSdk = 34
 
-    defaultConfig {
+    defaultConfig.apply {
         minSdk = 21
+        versionCode = 1
+        versionName = project.version.toString()
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+        }
     }
 
     compileOptions {
@@ -21,7 +29,29 @@ android {
     }
 
     kotlinOptions { jvmTarget = "17" }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "com.github.flizpay"
+                artifactId = "flizpay-sdk"
+                version = "0.1.0"
+
+                from(components["release"])
+            }
+        }
+    }
+}
+
 
 repositories {
     google()
@@ -34,11 +64,8 @@ dependencies {
     implementation(libs.core.ktx)
     implementation(libs.activity.ktx)
     implementation(libs.fragment.ktx)
-    implementation (libs.okhttp)
+    implementation(libs.okhttp)
     implementation(libs.security.crypto)
-
-
-
 
     testImplementation(libs.kotlin.test.junit5)
     testImplementation(libs.jupiter.junit.jupiter.engine)
