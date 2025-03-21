@@ -8,7 +8,6 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 
 class WebViewService : AppCompatActivity() {
-    private lateinit var keychainService: KeychainService
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,31 +16,30 @@ class WebViewService : AppCompatActivity() {
         // Get Intent Data
         val redirectUrl = intent.getStringExtra("redirectUrl") ?: return
         val token = intent.getStringExtra("token") ?: return
-        val keychainAccessKey = intent.getStringExtra("keychainAccessKey") ?: "flizpay_keychain_access_key"
-
-        // Instantiate Keychain Service
-        keychainService = KeychainService(this, keychainAccessKey)
 
         // Instantiate WebView
         val webView = WebView(this)
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
+
+        // Register WebViewBridge to intercept window.close()
+        val webViewBridge = WebViewBridge(webView) {
+            runOnUiThread { finish() } // Close activity when triggered
+        }
+
         runOnUiThread {
-            // Add keychain bridge
-            webView.addJavascriptInterface(
-                WebViewBridge(keychainService, webView),
-                "KeychainBridge"
-            )
             webView.webChromeClient = WebChromeClient()
             webView.webViewClient = WebViewClient()
 
             // Set content
             setContentView(webView)
 
-            // Load redirect url
+            // Load redirect URL with token
             val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token"
-            println("URL is $redirectUrlWithJwtToken")
             webView.loadUrl(redirectUrlWithJwtToken)
+
+            // Override window.close behavior
+            webViewBridge.overrideWindowClose()
         }
     }
 }

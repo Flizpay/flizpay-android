@@ -1,6 +1,5 @@
 package flizpay2.flizpaysdk.lib
 
-import android.util.Log
 import okhttp3.*
 import java.io.IOException
 
@@ -49,7 +48,6 @@ class TransactionService {
                     }
                     
                     val jsonResponse = it.body?.string()
-                    Log.d("TransactionService", "Raw response JSON: $jsonResponse")
                     
                     try {
                         val dataObject = JSONObject(jsonResponse ?: "")
