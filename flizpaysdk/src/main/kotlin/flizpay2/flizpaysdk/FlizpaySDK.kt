@@ -15,12 +15,14 @@ object FlizpaySDK {
      * @param context The Context from which to launch the payment WebView.
      * @param token The JWT token fetched by the host app.
      * @param amount The transaction amount.
+     * @param urlScheme The application url scheme.
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
      */
     fun initiatePayment(
         context: Context,
         token: String,
         amount: String,
+        urlScheme: String,
         onFailure: ((Throwable) -> Unit)? = null,
     ) {
         val transactionService = TransactionService()
@@ -31,6 +33,7 @@ object FlizpaySDK {
 
                 val intent = Intent(context, WebViewService::class.java).apply {
                     putExtra("redirectUrl", redirectUrl)
+                    putExtra("urlScheme", urlScheme)
                     putExtra("token", token)
                 }
 

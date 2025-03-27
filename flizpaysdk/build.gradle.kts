@@ -2,7 +2,7 @@ version = "0.1.0"
 group = "com.flizpay2"
 
 plugins {
-    id("com.android.library") version "8.7.3"
+    id("com.android.library") version "8.4.1"
     id("org.jetbrains.kotlin.android") version "1.8.0"
     id("maven-publish")
     id("jacoco")
