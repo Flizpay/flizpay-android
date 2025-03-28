@@ -30,9 +30,6 @@ jobs:
       - name: Grant execute permission to Gradle
         run: chmod +x gradlew
 
-      - name: Run Unit Tests (Robolectric)
-        run: ./gradlew testDebugUnitTest
-
       - name: Gradle cache
         uses: gradle/actions/setup-gradle@v3
         
@@ -61,7 +58,7 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Start AVD and wait for boot
+      - name: Run tests and generate coverage
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ matrix.api-level }}
@@ -73,13 +70,10 @@ jobs:
             adb -e shell settings put global window_animation_scale 0.0
             adb -e shell settings put global transition_animation_scale 0.0
             adb -e shell settings put global animator_duration_scale 0.0
-            ./gradlew connectedDebugAndroidTest
+            ./gradlew jacocoTestReport
         env:
           ANDROID_EMULATOR_DEBUG: "true"
           ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: 60
-
-      - name: Generate Coverage Report
-        run: ./gradlew jacocoTestReport
 
       - name: Upload to Coveralls
         uses: coverallsapp/github-action@v2
