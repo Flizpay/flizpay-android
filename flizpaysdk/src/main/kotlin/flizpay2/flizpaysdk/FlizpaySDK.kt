@@ -15,7 +15,6 @@ object FlizpaySDK {
      * @param context The Context from which to launch the payment WebView.
      * @param token The JWT token fetched by the host app.
      * @param amount The transaction amount.
-     * @param urlScheme The application url scheme.
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
      */
     fun initiatePayment(
