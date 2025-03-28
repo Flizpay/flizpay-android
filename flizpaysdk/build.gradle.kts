@@ -15,6 +15,7 @@ android {
         minSdk = 21
         versionCode = 1
         versionName = project.version.toString()
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -34,6 +35,21 @@ android {
         singleVariant("release") {
             withSourcesJar()
             withJavadocJar()
+        }
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
+    packaging {
+        resources {
+            excludes.add("META-INF/LICENSE.md")
+            excludes.add("META-INF/LICENSE.txt")
+            excludes.add("META-INF/DEPENDENCIES")
+            excludes.add("META-INF/LICENSE-notice.md")
         }
     }
 }
@@ -66,10 +82,33 @@ dependencies {
     implementation(libs.fragment.ktx)
     implementation(libs.okhttp)
     implementation(libs.security.crypto)
+    implementation(libs.junit.ktx)
+    implementation(libs.uiautomator)
 
     testImplementation(libs.kotlin.test.junit5)
     testImplementation(libs.jupiter.junit.jupiter.engine)
-    testRuntimeOnly(libs.junit.platform.launcher)
+    testImplementation(libs.junit.jupiter.api)
+    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.robolectric)
+    testImplementation(libs.core.v150)
+    testImplementation(libs.mockwebserver)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.core)
+    testImplementation(libs.byte.buddy)
+    
+    // AndroidX Test core dependencies
+    androidTestImplementation(libs.junit)  // JUnit support
+    androidTestImplementation(libs.espresso.core) // UI testing
+    androidTestImplementation(libs.runner)  // Test runner
+    androidTestImplementation(libs.rules)   // Test rules
+
+    // MockK for Android instrumented tests
+    androidTestImplementation(libs.mockk.android)
+
+    // Coroutine testing support
+    androidTestImplementation(libs.kotlinx.coroutines.test.v164)
+    androidTestImplementation(libs.jupiter.junit.jupiter)
 }
 
 task<Delete>("clearJar") {
@@ -82,4 +121,9 @@ task<Copy>("makeJar") {
     include("classes.jar")
     rename { _: String -> "FlizpaySDK.jar" }
     dependsOn("clearJar", "build")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    systemProperty("robolectric.logging", "stdout")
 }

@@ -4,20 +4,55 @@
 [versions]
 activity-ktx = "1.8.2"
 appcompat = "1.6.1"
+byte-buddy = "1.14.11"
+core = "1.6.1"
 core-ktx = "1.12.0"
+core-version = "1.5.0"
+espresso-core = "3.6.1"
 fragment-ktx = "1.6.2"
+junit = "1.2.1"
+junit-jupiter = "5.8.2"
+junit-jupiter-api = "5.11.3"
+kotlinx-coroutines-test = "1.7.1"
+kotlinx-coroutines-test-version = "1.6.4"
+mockk = "1.13.7"
+mockk-android = "1.13.5"
+mockwebserver = "4.9.3"
 okhttp = "4.9.0"
+robolectric = "4.9"
+runner = "1.6.2"
 security-crypto = "1.1.0-alpha06"
+junit-ktx = "1.2.1"
+junit-jupiter-version = "5.8.1"
+uiautomator = "2.3.0"
 
 [libraries]
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity-ktx" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+byte-buddy = { module = "net.bytebuddy:byte-buddy", version.ref = "byte-buddy" }
+core = { module = "androidx.test:core", version.ref = "core" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
+core-v150 = { module = "androidx.test:core", version.ref = "core-version" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }
 fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment-ktx" }
+junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter-api" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 jupiter-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine" }
 kotlin-test-junit5 = { module = "org.jetbrains.kotlin:kotlin-test-junit5" }
+kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test" }
+kotlinx-coroutines-test-v164 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines-test-version" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk-android" }
+mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "mockwebserver" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+rules = { module = "androidx.test:rules", version.ref = "core-version" }
+runner = { module = "androidx.test:runner", version.ref = "runner" }
 security-crypto = { module = "androidx.security:security-crypto", version.ref = "security-crypto" }
+junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junit-ktx" }
+jupiter-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit-jupiter-version" }
+uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
 
 [plugins]
