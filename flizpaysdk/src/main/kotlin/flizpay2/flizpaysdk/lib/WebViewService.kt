@@ -2,7 +2,6 @@ package flizpay2.flizpaysdk.lib
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
@@ -13,16 +12,6 @@ import flizpay2.flizpaysdk.Constants
 
 
 class WebViewService : AppCompatActivity() {
-    private val noCredentialsBankHosts = listOf(
-        "ing-diba.de",    // ING-DiBa
-        "revolut.com",    // Revolut
-        "consorsbank.de", // Consorsbank
-        "n26.com",        // N26
-        "tomorrow.one",   // Tomorrow
-        "kontist.com",    // Kontist
-        "finom.com"       // Finom
-    )
-    
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +41,7 @@ class WebViewService : AppCompatActivity() {
                 // If the URL is HTTPS and host is in the noCredentialsBankHosts list,
                 // open it externally instead of loading in WebView
                 if (url.scheme.equals("https", ignoreCase = true) &&
-                    noCredentialsBankHosts.any { host.contains(it) }
+                    Constants.NO_CREDS_BANKS.any { host.contains(it) }
                 ) {
                     val intent = Intent(Intent.ACTION_VIEW, url)
                     if (intent.resolveActivity(packageManager) != null) {
