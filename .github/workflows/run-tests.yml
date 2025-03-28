@@ -76,20 +76,6 @@ jobs:
           ANDROID_EMULATOR_DEBUG: "true"
           ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: 60
 
-      - name: Find Coverage Files
-        run: |
-          echo "Finding coverage files..."
-          COVERAGE_FILE_1=$(find ${{ github.workspace }}/flizpaysdk -type f -name "coverage.ec" | head -n 1)
-          COVERAGE_FILE_2=$(find ${{ github.workspace }}/flizpaysdk -type f -name "testDebugUnitTest.exec" | head -n 1)
-          echo "Coverage files found:"
-          echo $COVERAGE_FILE_1
-          echo $COVERAGE_FILE_2
-          
-          mkdir ${{ github.workspace }}/coverage/
-          mv "$COVERAGE_FILE_1" ${{ github.workspace }}/coverage/coverage.ec
-          mv "$COVERAGE_FILE_2" ${{ github.workspace }}/coverage/testDebugUnitTest.exec
-
-
       - name: Upload to Coveralls
         uses: coverallsapp/github-action@v2
         with:
@@ -98,7 +84,7 @@ jobs:
           allow-empty: true
           debug: true
           measure: true
-          files: ${{ github.workspace }}/coverage/coverage.ec ${{ github.workspace }}/coverage/testDebugUnitTest.exec
+          files: ${{ github.workspace }}/flizpaysdk/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml
 
       - name: Upload Test Reports (for debugging)
         uses: actions/upload-artifact@v4

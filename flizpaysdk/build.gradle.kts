@@ -127,20 +127,22 @@ tasks.register<JacocoReport>("jacocoTestReport") {
     dependsOn(tasks.getByName("connectedDebugAndroidTest"))
 
     reports {
-        xml.apply {
-            isEnabled = true
-        }
-        html.apply {
-            isEnabled = true
-        }
+        xml.required.set(true)
     }
 
     val buildDir = "$projectDir/build"
 
     // Unit test coverage report
     sourceDirectories.setFrom(files("${projectDir}/src/main/kotlin"))
-    classDirectories.setFrom(files("${buildDir}/intermediates/javac/debug/classes"))
-    executionData.setFrom(files("${buildDir}/jacoco/testDebugUnitTest.exec"))
+    classDirectories.setFrom(files("${buildDir}/tmp/kotlin-classes/debug"))
+    executionData.setFrom(
+        fileTree(buildDir) {
+            include(
+                "outputs/code_coverage/debugAndroidTest/connected/**/*.ec",
+                "outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec"
+            )
+        }
+    )
 }
 
 task<Delete>("clearJar") {
