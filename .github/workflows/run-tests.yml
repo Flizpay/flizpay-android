@@ -70,11 +70,6 @@ jobs:
           profile: pixel_3a
           script: |
             adb -e wait-for-device
-            retries=5
-            while [ $retries -gt 0 ] && ! adb -e shell getprop sys.boot_completed; do
-              sleep 5
-              retries=$((retries - 1))
-            done
             adb -e shell settings put global window_animation_scale 0.0
             adb -e shell settings put global transition_animation_scale 0.0
             adb -e shell settings put global animator_duration_scale 0.0
