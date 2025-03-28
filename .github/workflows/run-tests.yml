@@ -83,7 +83,7 @@ jobs:
           allow-empty: true
           debug: true
           measure: true
-          files: flizpaysdk/build/reports/androidTests/connected/debug flizpaysdk/build/reports/tests/testDebugUnitTest 
+          files: flizpaysdk/build/outputs/code_coverage/debugAndroidTest/connected/Medium_Phone_API_35(AVD)\ \- 15/coverage.ec flizpaysdk/build/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec
 
       - name: Upload Test Reports (for debugging)
         uses: actions/upload-artifact@v4
