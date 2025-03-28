@@ -85,8 +85,8 @@ jobs:
           echo $COVERAGE_FILE_1
           echo $COVERAGE_FILE_2
           
-          echo "COVERAGE_FILE_1=$COVERAGE_FILE_1" >> $GITHUB_ENV
-          echo "COVERAGE_FILE_2=$COVERAGE_FILE_2" >> $GITHUB_ENV
+          echo "COVERAGE_FILE_1=$(printf '%q' "$COVERAGE_FILE_1")" >> $GITHUB_ENV
+          echo "COVERAGE_FILE_2=$(printf '%q' "$COVERAGE_FILE_2")" >> $GITHUB_ENV
 
 
       - name: Upload to Coveralls
