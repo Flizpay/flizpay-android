@@ -26,13 +26,13 @@ class TransactionService {
             .put("currency", "EUR")
             .put("source", "sdk_integration")
             .toString()
-            .toRequestBody("application/json".toMediaTypeOrNull())
+            .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 
         val request = Request.Builder()
             .url(url)
             .post(requestBody)
             .addHeader("Authentication", "Bearer $token")
-            .addHeader("Content-Type", "application/json")
+            .addHeader("Content-Type", "application/json; charset=utf-8")
             .build()
 
         client.newCall(request).enqueue(object : Callback {
