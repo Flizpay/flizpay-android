@@ -83,6 +83,7 @@ jobs:
           allow-empty: true
           debug: true
           measure: true
+          files: build/reports/jacoco/jacoco.xml build/reports/jacoco/html
 
       - name: Upload Test Reports (for debugging)
         uses: actions/upload-artifact@v4
@@ -94,5 +95,5 @@ jobs:
       - name: Force Kill Emulator After Tests
         run: |
           adb -s emulator-5554 emu kill || true
-          adb -e kill-server
-          kill $(pgrep -f emulator)
+          adb -e kill-server || true
+          kill $(pgrep -f emulator) || true
