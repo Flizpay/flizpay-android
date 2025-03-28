@@ -76,6 +76,19 @@ jobs:
           ANDROID_EMULATOR_DEBUG: "true"
           ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL: 60
 
+      - name: Find Coverage Files
+        run: |
+          echo "Finding coverage files..."
+          COVERAGE_FILE_1=$(find ${{ github.workspace }}/flizpaysdk -type f -name "coverage.ec" | head -n 1)
+          COVERAGE_FILE_2=$(find ${{ github.workspace }}/flizpaysdk -type f -name "testDebugUnitTest.exec" | head -n 1)
+          echo "Coverage files found:"
+          echo $COVERAGE_FILE_1
+          echo $COVERAGE_FILE_2
+          
+          echo "COVERAGE_FILE_1=$COVERAGE_FILE_1" >> $GITHUB_ENV
+          echo "COVERAGE_FILE_2=$COVERAGE_FILE_2" >> $GITHUB_ENV
+
+
       - name: Upload to Coveralls
         uses: coverallsapp/github-action@v2
         with:
@@ -84,7 +97,7 @@ jobs:
           allow-empty: true
           debug: true
           measure: true
-          files: flizpaysdk/build/outputs/code_coverage/debugAndroidTest/connected/default_android_emulator\(AVD\)\ -\ 10/coverage.ec flizpaysdk/build/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec
+          files: $COVERAGE_FILE_1 $COVERAGE_FILE_2
 
       - name: Upload Test Reports (for debugging)
         uses: actions/upload-artifact@v4
