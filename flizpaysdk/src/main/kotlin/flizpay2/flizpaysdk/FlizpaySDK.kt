@@ -34,10 +34,7 @@ object FlizpaySDK {
                     putExtra("token", token)
                 }
 
-                // Ensure it's an activity context
-                if (context !is AppCompatActivity) {
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                }
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
                 context.startActivity(intent)
             } else {

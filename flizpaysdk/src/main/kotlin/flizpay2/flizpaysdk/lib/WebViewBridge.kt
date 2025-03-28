@@ -2,8 +2,9 @@ package flizpay2.flizpaysdk.lib
 
 import android.webkit.JavascriptInterface
 import android.webkit.WebView
+import androidx.appcompat.app.AppCompatActivity
 
-class WebViewBridge(private val webView: WebView, private val onClose: () -> Unit) {
+class WebViewBridge(private val webView: WebView, private val activity: AppCompatActivity) {
 
     init {
         webView.addJavascriptInterface(this, "AndroidBridge")
@@ -23,6 +24,6 @@ class WebViewBridge(private val webView: WebView, private val onClose: () -> Uni
 
     @JavascriptInterface
     fun closeWebView() {
-        onClose()
+        activity.finish()
     }
 }
