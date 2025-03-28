@@ -28,7 +28,7 @@ class WebViewService : AppCompatActivity() {
 
         // Get Intent Data
         val redirectUrl = intent.getStringExtra("redirectUrl") ?: return
-        val urlScheme = intent.getStringExtra("urlScheme") ?: return
+        val urlScheme = "flizpaywebview://"
         val token = intent.getStringExtra("token") ?: return
 
         // Instantiate WebView
@@ -49,7 +49,6 @@ class WebViewService : AppCompatActivity() {
                 val host = url.host ?: return false
                 
                 if (url.scheme.equals("androiddemo", ignoreCase = true)) {
-                   
                     return true // We have handled this URL ourselves
                 }            
                 

@@ -22,7 +22,6 @@ object FlizpaySDK {
         context: Context,
         token: String,
         amount: String,
-        urlScheme: String,
         onFailure: ((Throwable) -> Unit)? = null,
     ) {
         val transactionService = TransactionService()
@@ -33,7 +32,6 @@ object FlizpaySDK {
 
                 val intent = Intent(context, WebViewService::class.java).apply {
                     putExtra("redirectUrl", redirectUrl)
-                    putExtra("urlScheme", urlScheme)
                     putExtra("token", token)
                 }
 
