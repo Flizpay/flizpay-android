@@ -61,6 +61,7 @@ jobs:
       - name: Run tests and generate coverage
         uses: reactivecircus/android-emulator-runner@v2
         with:
+          avd-name: default_android_emulator
           api-level: ${{ matrix.api-level }}
           target: google_apis
           arch: x86_64
@@ -83,7 +84,7 @@ jobs:
           allow-empty: true
           debug: true
           measure: true
-          files: flizpaysdk/build/outputs/code_coverage/debugAndroidTest/connected/Medium_Phone_API_35\(AVD\)\ -\ 15/coverage.ec flizpaysdk/build/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec
+          files: flizpaysdk/build/outputs/code_coverage/debugAndroidTest/connected/default_android_emulator/coverage.ec flizpaysdk/build/outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec
 
       - name: Upload Test Reports (for debugging)
         uses: actions/upload-artifact@v4
