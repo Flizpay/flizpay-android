@@ -23,9 +23,7 @@ class WebViewService : AppCompatActivity() {
         webView.settings.domStorageEnabled = true
 
         // Register WebViewBridge to intercept window.close()
-        val webViewBridge = WebViewBridge(webView) {
-            runOnUiThread { finish() } // Close activity when triggered
-        }
+        val webViewBridge = WebViewBridge(webView, this)
 
         runOnUiThread {
             webView.webChromeClient = WebChromeClient()
