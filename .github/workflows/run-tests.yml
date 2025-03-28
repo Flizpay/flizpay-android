@@ -85,8 +85,8 @@ jobs:
           echo $COVERAGE_FILE_1
           echo $COVERAGE_FILE_2
           
-          echo "COVERAGE_FILE_1=$(printf '%q' "$COVERAGE_FILE_1")" >> $GITHUB_ENV
-          echo "COVERAGE_FILE_2=$(printf '%q' "$COVERAGE_FILE_2")" >> $GITHUB_ENV
+          cp $COVERAGE_FILE_1 ${{ github.workspace }}/coverage/coverage.ec
+          cp $COVERAGE_FILE_2 ${{ github.workspace }}/coverage/testDebugUnitTest.exec
 
 
       - name: Upload to Coveralls
@@ -97,7 +97,7 @@ jobs:
           allow-empty: true
           debug: true
           measure: true
-          files: $COVERAGE_FILE_1 $COVERAGE_FILE_2
+          files: ${{ github.workspace }}/coverage/coverage.ec ${{ github.workspace }}/coverage/testDebugUnitTest.exec
 
       - name: Upload Test Reports (for debugging)
         uses: actions/upload-artifact@v4
