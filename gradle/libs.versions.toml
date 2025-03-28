@@ -25,6 +25,7 @@ security-crypto = "1.1.0-alpha06"
 junit-ktx = "1.2.1"
 junit-jupiter-version = "5.8.1"
 uiautomator = "2.3.0"
+ui-test-android = "1.7.8"
 
 [libraries]
 activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity-ktx" }
@@ -54,5 +55,6 @@ security-crypto = { module = "androidx.security:security-crypto", version.ref = 
 junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junit-ktx" }
 jupiter-junit-jupiter = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit-jupiter-version" }
 uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+ui-test-android = { group = "androidx.compose.ui", name = "ui-test-android", version.ref = "ui-test-android" }
 
 [plugins]

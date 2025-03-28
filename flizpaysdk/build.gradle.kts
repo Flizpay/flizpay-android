@@ -5,6 +5,7 @@ plugins {
     id("com.android.library") version "8.7.3"
     id("org.jetbrains.kotlin.android") version "1.8.0"
     id("maven-publish")
+    id("jacoco")
 }
 
 android {
@@ -21,6 +22,11 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+        }
+
+        debug {
+            enableUnitTestCoverage = true
+            enableAndroidTestCoverage = true
         }
     }
 
@@ -82,8 +88,7 @@ dependencies {
     implementation(libs.fragment.ktx)
     implementation(libs.okhttp)
     implementation(libs.security.crypto)
-    implementation(libs.junit.ktx)
-    implementation(libs.uiautomator)
+    implementation(libs.ui.test.android)
 
     testImplementation(libs.kotlin.test.junit5)
     testImplementation(libs.jupiter.junit.jupiter.engine)
@@ -102,6 +107,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core) // UI testing
     androidTestImplementation(libs.runner)  // Test runner
     androidTestImplementation(libs.rules)   // Test rules
+    androidTestImplementation(libs.junit.ktx)
+    androidTestImplementation(libs.uiautomator)
 
     // MockK for Android instrumented tests
     androidTestImplementation(libs.mockk.android)
@@ -109,6 +116,31 @@ dependencies {
     // Coroutine testing support
     androidTestImplementation(libs.kotlinx.coroutines.test.v164)
     androidTestImplementation(libs.jupiter.junit.jupiter)
+}
+
+jacoco {
+    toolVersion = "0.8.7"  // Use the appropriate Jacoco version
+}
+
+tasks.register<JacocoReport>("jacocoTestReport") {
+    dependsOn(tasks.getByName("testDebugUnitTest"))
+    dependsOn(tasks.getByName("connectedDebugAndroidTest"))
+
+    reports {
+        xml.apply {
+            isEnabled = true
+        }
+        html.apply {
+            isEnabled = true
+        }
+    }
+
+    val buildDir = "$projectDir/build"
+
+    // Unit test coverage report
+    sourceDirectories.setFrom(files("${projectDir}/src/main/kotlin"))
+    classDirectories.setFrom(files("${buildDir}/intermediates/javac/debug/classes"))
+    executionData.setFrom(files("${buildDir}/jacoco/testDebugUnitTest.exec"))
 }
 
 task<Delete>("clearJar") {
