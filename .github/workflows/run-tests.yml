@@ -71,7 +71,7 @@ jobs:
           script: |
             adb -e wait-for-device
             retries=5
-            while ! adb -e shell getprop sys.boot_completed && [ $retries -gt 0 ]; do
+            while [ $retries -gt 0 ] && ! adb -e shell getprop sys.boot_completed; do
               sleep 5
               retries=$((retries - 1))
             done
