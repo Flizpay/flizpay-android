@@ -86,8 +86,8 @@ jobs:
           echo $COVERAGE_FILE_2
           
           mkdir ${{ github.workspace }}/coverage/
-          cp $COVERAGE_FILE_1 ${{ github.workspace }}/coverage/coverage.ec
-          cp $COVERAGE_FILE_2 ${{ github.workspace }}/coverage/testDebugUnitTest.exec
+          cp $(printf '%q' "$COVERAGE_FILE_1") ${{ github.workspace }}/coverage/
+          cp $(printf '%q' "$COVERAGE_FILE_2") ${{ github.workspace }}/coverage/
 
 
       - name: Upload to Coveralls
