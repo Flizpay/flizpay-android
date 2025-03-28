@@ -6,6 +6,7 @@
 [![Version](https://img.shields.io/github/v/tag/flizpay/flizpay-android)](https://github.com/flizpay/flizpay-android/releases)
 [![](https://jitpack.io/v/flizpay/flizpay-android.svg)](https://jitpack.io/#flizpay/flizpay-android)
 [![License](https://img.shields.io/github/license/flizpay/flizpay-android)](LICENSE)
+[![Coverage Status](https://coveralls.io/repos/github/Flizpay/flizpay-android/badge.svg?branch=feat/add-test-coverage)](https://coveralls.io/github/Flizpay/flizpay-android?branch=feat/add-test-coverage)
 
 
 Welcome to the FLIZpay Android SDK! Easily integrate secure, seamless, and user-friendly payments directly into your Android app.
