@@ -83,7 +83,7 @@ jobs:
           allow-empty: true
           debug: true
           measure: true
-          files: build/reports/jacoco/jacoco.xml build/reports/jacoco/html
+          files: flizpaysdk/build/reports/androidTests/connected/debug flizpaysdk/build/reports/tests/testDebugUnitTest 
 
       - name: Upload Test Reports (for debugging)
         uses: actions/upload-artifact@v4

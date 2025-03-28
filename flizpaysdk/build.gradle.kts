@@ -129,11 +129,9 @@ tasks.register<JacocoReport>("jacocoTestReport") {
     reports {
         xml.apply {
             isEnabled = true
-            outputLocation.set(file("build/reports/jacoco/jacoco.xml"))
         }
         html.apply {
             isEnabled = true
-            outputLocation.set(file("build/reports/jacoco/html"))
         }
     }
 
