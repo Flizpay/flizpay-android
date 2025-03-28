@@ -9,6 +9,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
+import flizpay2.flizpaysdk.Constants
 
 
 class WebViewService : AppCompatActivity() {
@@ -28,7 +29,7 @@ class WebViewService : AppCompatActivity() {
 
         // Get Intent Data
         val redirectUrl = intent.getStringExtra("redirectUrl") ?: return
-        val urlScheme = "flizpaywebview://"
+        val urlScheme = Constants.URL_SCHEME
         val token = intent.getStringExtra("token") ?: return
 
         // Instantiate WebView
@@ -47,11 +48,6 @@ class WebViewService : AppCompatActivity() {
             ): Boolean {
                 val url = request?.url ?: return false
                 val host = url.host ?: return false
-                
-                if (url.scheme.equals("androiddemo", ignoreCase = true)) {
-                    return true // We have handled this URL ourselves
-                }            
-                
 
                 // If the URL is HTTPS and host is in the noCredentialsBankHosts list,
                 // open it externally instead of loading in WebView
