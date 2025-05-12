@@ -21,11 +21,12 @@ object FlizpaySDK {
         context: Context,
         token: String,
         amount: String,
+        metadata: Map<String, String>? = null,
         onFailure: ((Throwable) -> Unit)? = null,
     ) {
         val transactionService = TransactionService()
 
-        transactionService.fetchTransactionInfo(token, amount) { result ->
+        transactionService.fetchTransactionInfo(token, amount, metadata) { result ->
             if(result.isSuccess) {
                 val redirectUrl = result.getOrNull() ?: Constants.BASE_URL
 

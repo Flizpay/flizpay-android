@@ -18,6 +18,7 @@ class TransactionService {
     fun fetchTransactionInfo(
         token: String,
         amount: String,
+        metadata: Map<String, String>? = null,
         completion: (Result<String>) -> Unit
     ) {
         val url = "${Constants.API_URL}/transactions"
@@ -25,6 +26,7 @@ class TransactionService {
             .put("amount", amount)
             .put("currency", "EUR")
             .put("source", "sdk_integration")
+            .put("metadata", JSONObject(metadata ?: emptyMap()))
             .toString()
             .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 
