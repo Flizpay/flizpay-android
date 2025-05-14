@@ -15,13 +15,14 @@ object FlizpaySDK {
      * @param context The Context from which to launch the payment WebView.
      * @param token The JWT token fetched by the host app.
      * @param amount The transaction amount.
+     * @param metadata The metadata object.
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
      */
     fun initiatePayment(
         context: Context,
         token: String,
         amount: String,
-        metadata: Map<String, String>? = null,
+        metadata: Map<String, Any?>? = null,
         onFailure: ((Throwable) -> Unit)? = null,
     ) {
         val transactionService = TransactionService()
