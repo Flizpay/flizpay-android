@@ -5,7 +5,7 @@ object Constants {
     var BASE_URL: String = "https://secure.flizpay.de"
     var URL_SCHEME: String = "flizpaywebview://"
     var NO_CREDS_BANKS = listOf(
-        "ing-diba.de",    // ING-DiBa
+        "myaccount.ing.com",    // ING-DiBa
         "revolut.com",    // Revolut
         "consorsbank.de", // Consorsbank
         "n26.com",        // N26
