@@ -66,7 +66,7 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 groupId = "com.github.flizpay"
                 artifactId = "flizpay-sdk"
-                version = "0.1.0"
+                version = "0.1.2"
 
                 from(components["release"])
             }
