@@ -7,10 +7,16 @@ import flizpay2.flizpaysdk.Constants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
+import org.json.JSONArray
 
 
 class TransactionService {
     private val client = OkHttpClient()
+
+    private fun Map<String, Any?>.toJsonObject(): JSONObject =
+        JSONObject().apply {
+            forEach { (k, v) -> put(k, JSONObject.wrap(v)) }
+        }
 
     /**
      * Calls the /transactions endpoint using the provided token and amount.
@@ -18,6 +24,7 @@ class TransactionService {
     fun fetchTransactionInfo(
         token: String,
         amount: String,
+        metadata: Map<String, Any?>? = null,
         completion: (Result<String>) -> Unit
     ) {
         val url = "${Constants.API_URL}/transactions"
@@ -25,6 +32,7 @@ class TransactionService {
             .put("amount", amount)
             .put("currency", "EUR")
             .put("source", "sdk_integration")
+            .put("metadata", metadata?.toJsonObject() ?: JSONObject())
             .toString()
             .toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
 

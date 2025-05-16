@@ -32,6 +32,7 @@ class FlizpaySDKTest {
             anyConstructed<TransactionService>().fetchTransactionInfo(
                 any(),
                 any(),
+                any(),
                 captureLambda()
             )
         } answers {
@@ -62,6 +63,7 @@ class FlizpaySDKTest {
         // Override default success mock with failure
         every {
             anyConstructed<TransactionService>().fetchTransactionInfo(
+                any(),
                 any(),
                 any(),
                 captureLambda()
