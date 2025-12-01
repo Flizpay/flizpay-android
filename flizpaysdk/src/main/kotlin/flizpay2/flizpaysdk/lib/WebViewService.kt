@@ -30,10 +30,6 @@ class WebViewService : AppCompatActivity() {
         webView.settings.useWideViewPort = true
         webView.settings.loadWithOverviewMode = true
 
-        // Disable zoom controls for consistent payment flow experience
-        webView.settings.setSupportZoom(false)
-        webView.settings.builtInZoomControls = false
-
         // Register WebViewBridge to intercept window.close()
         val webViewBridge = WebViewBridge(webView, this)
 
