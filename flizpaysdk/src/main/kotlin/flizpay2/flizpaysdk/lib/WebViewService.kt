@@ -26,6 +26,14 @@ class WebViewService : AppCompatActivity() {
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
 
+        // Viewport settings for proper content scaling and positioning
+        webView.settings.useWideViewPort = true
+        webView.settings.loadWithOverviewMode = true
+
+        // Disable zoom controls for consistent payment flow experience
+        webView.settings.setSupportZoom(false)
+        webView.settings.builtInZoomControls = false
+
         // Register WebViewBridge to intercept window.close()
         val webViewBridge = WebViewBridge(webView, this)
 
@@ -56,12 +64,12 @@ class WebViewService : AppCompatActivity() {
 
         runOnUiThread {
             webView.webChromeClient = WebChromeClient()
-       
+
             // Set content
             setContentView(webView)
 
             // Load redirect URL with token
-             val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token&redirect-url=$urlScheme"
+            val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token&redirect-url=$urlScheme"
 
             // Load the URL
             webView.loadUrl(redirectUrlWithJwtToken)
