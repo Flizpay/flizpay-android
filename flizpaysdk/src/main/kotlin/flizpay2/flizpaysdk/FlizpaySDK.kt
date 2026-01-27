@@ -7,6 +7,17 @@ import androidx.appcompat.app.AppCompatActivity
 import flizpay2.flizpaysdk.lib.TransactionService
 import flizpay2.flizpaysdk.lib.WebViewService
 
+/**
+ * Configuration for FlizPay SDK URL overrides.
+ * 
+ * @param apiUrl Optional override for the API URL (defaults to production if null or empty)
+ * @param baseUrl Optional override for the base URL (defaults to production if null or empty)
+ */
+data class FlizpayConfig(
+    val apiUrl: String? = null,
+    val baseUrl: String? = null
+)
+
 object FlizpaySDK {
 
     /**
@@ -16,6 +27,7 @@ object FlizpaySDK {
      * @param token The JWT token fetched by the host app.
      * @param amount The transaction amount.
      * @param metadata The metadata object.
+     * @param config Optional configuration for URL overrides.
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
      */
     fun initiatePayment(
@@ -23,13 +35,20 @@ object FlizpaySDK {
         token: String,
         amount: String,
         metadata: Map<String, Any?>? = null,
+        config: FlizpayConfig? = null,
         onFailure: ((Throwable) -> Unit)? = null,
     ) {
-        val transactionService = TransactionService()
+        val transactionService = TransactionService(
+            apiUrl = config?.apiUrl,
+            baseUrl = config?.baseUrl
+        )
+        
+        // Use configured base URL or fall back to production default
+        val effectiveBaseUrl = config?.baseUrl?.takeIf { it.isNotEmpty() } ?: Constants.BASE_URL
 
         transactionService.fetchTransactionInfo(token, amount, metadata) { result ->
             if(result.isSuccess) {
-                val redirectUrl = result.getOrNull() ?: Constants.BASE_URL
+                val redirectUrl = result.getOrNull() ?: effectiveBaseUrl
 
                 val intent = Intent(context, WebViewService::class.java).apply {
                     putExtra("redirectUrl", redirectUrl)
