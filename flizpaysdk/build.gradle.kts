@@ -2,7 +2,7 @@ version = "0.1.2"
 group = "com.flizpay2"
 
 plugins {
-    id("com.android.library") version "8.7.3"
+    id("com.android.library") version "8.8.0"
     id("org.jetbrains.kotlin.android") version "1.8.0"
     id("maven-publish")
     id("jacoco")
@@ -10,10 +10,11 @@ plugins {
 
 android {
     namespace = "com.flizpay2"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig.apply {
         minSdk = 21
+        targetSdk = 35
         versionCode = 1
         versionName = project.version.toString()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
