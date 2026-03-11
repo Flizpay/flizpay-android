@@ -56,6 +56,13 @@ class WebViewService : AppCompatActivity() {
                 }
                 return false // Allow the WebView to load the URL
             }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                // Re-apply the bridge after each navigation so payer-web can close the
+                // activity even after redirects or full page loads.
+                webViewBridge.overrideWindowClose()
+            }
         }
 
 
@@ -71,9 +78,6 @@ class WebViewService : AppCompatActivity() {
 
             // Load the URL
             webView.loadUrl(redirectUrlWithJwtToken)
-
-            // Override window.close behavior if needed
-            webViewBridge.overrideWindowClose()
         }
     }
 }

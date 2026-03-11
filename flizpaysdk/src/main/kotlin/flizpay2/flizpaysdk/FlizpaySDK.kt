@@ -7,7 +7,6 @@ import flizpay2.flizpaysdk.lib.TransactionService
 import flizpay2.flizpaysdk.lib.WebViewService
 
 object FlizpaySDK {
-
     /**
      * Initiates the payment flow within your SDK.
      *

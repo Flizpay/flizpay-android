@@ -25,6 +25,10 @@ class WebViewBridgeTest {
 
         every { mockContext.startActivity(any()) } just runs
         every { mockContext.finish() } answers { closeFlag.set(true) }
+        every { mockWebView.post(any()) } answers {
+            firstArg<Runnable>().run()
+            true
+        }
     }
 
     @Test
@@ -54,5 +58,22 @@ class WebViewBridgeTest {
         val method = WebViewBridge::class.java.getMethod("closeWebView")
         val annotation = method.getAnnotation(android.webkit.JavascriptInterface::class.java)
         assert(annotation != null)
+    }
+
+    @Test
+    fun test_overrideWindowClose_injects_close_bridge() {
+        every { mockWebView.evaluateJavascript(any(), any()) } just Runs
+
+        webViewBridge.overrideWindowClose()
+
+        verify {
+            mockWebView.evaluateJavascript(
+                match { script ->
+                    script.contains("window.close = function()") &&
+                    script.contains("AndroidBridge.closeWebView();")
+                },
+                null
+            )
+        }
     }
 }
