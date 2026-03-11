@@ -103,10 +103,13 @@ class FlizpaySDKTest {
 
     @Test
     fun test_url_scheme_is_added_to_intent_extras() {
+        val intentSlot = slot<Intent>()
+        every { mockContext.startActivity(capture(intentSlot)) } just Runs
+
         // Execute
         FlizpaySDK.initiatePayment(mockContext, testToken, testAmount, urlScheme = testUrlScheme)
 
         // Verify
-        verify { anyConstructed<Intent>().putExtra("urlScheme", testUrlScheme) }
+        assertTrue(intentSlot.captured.getStringExtra("urlScheme") == testUrlScheme)
     }
 }
