@@ -28,6 +28,7 @@ object FlizpaySDK {
      * @param amount The transaction amount.
      * @param metadata The metadata object.
      * @param config Optional configuration for URL overrides.
+     * @param urlScheme The host app callback URL used for redirect-based bank flows.
      * @param onFailure Optional callback to handle errors (e.g., show alerts).
      */
     fun initiatePayment(
@@ -36,6 +37,7 @@ object FlizpaySDK {
         amount: String,
         metadata: Map<String, Any?>? = null,
         config: FlizpayConfig? = null,
+        urlScheme: String,
         onFailure: ((Throwable) -> Unit)? = null,
     ) {
         val transactionService = TransactionService(
@@ -53,6 +55,7 @@ object FlizpaySDK {
                 val intent = Intent(context, WebViewService::class.java).apply {
                     putExtra("redirectUrl", redirectUrl)
                     putExtra("token", token)
+                    putExtra("urlScheme", urlScheme)
                 }
 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

@@ -18,6 +18,7 @@ android {
         versionCode = 1
         versionName = project.version.toString()
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["flizpayUrlScheme"] = "flizpaywebview"
     }
 
     buildTypes {

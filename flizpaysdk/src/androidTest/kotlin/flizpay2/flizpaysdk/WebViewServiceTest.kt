@@ -21,6 +21,7 @@ class WebViewServiceTest {
 
     private val testRedirectUrl = "https://test.flizpay.com/checkout"
     private val testToken = "test-token"
+    private val testUrlScheme = "flizdemo://test?foo=bar"
 
     @Before
     fun setup() {
@@ -28,6 +29,7 @@ class WebViewServiceTest {
         mockIntent = mockk(relaxed = true)
         every { mockIntent.getStringExtra("redirectUrl") } returns testRedirectUrl
         every { mockIntent.getStringExtra("token") } returns testToken
+        every { mockIntent.getStringExtra("urlScheme") } returns testUrlScheme
 
         // Mock WebView and WebViewBridge
         mockWebView = mockk(relaxed = true)
@@ -47,7 +49,7 @@ class WebViewServiceTest {
 
     @Test
     fun test_URL_loading_with_token() {
-        val expectedUrl = "$testRedirectUrl&jwt=$testToken"
+        val expectedUrl = "$testRedirectUrl&jwt=$testToken&redirect-url=$testUrlScheme"
 
         // Simulate WebView loadUrl()
         every { mockWebView.loadUrl(any()) } just runs
@@ -80,6 +82,7 @@ class WebViewServiceTest {
         // Simulate missing extras
         every { mockIntent.getStringExtra("redirectUrl") } returns null
         every { mockIntent.getStringExtra("token") } returns null
+        every { mockIntent.getStringExtra("urlScheme") } returns null
 
         // Simulate activity finishing
         every { mockActivity.finish() } just runs

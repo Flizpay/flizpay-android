@@ -18,7 +18,9 @@ class WebViewService : AppCompatActivity() {
 
         // Get Intent Data
         val redirectUrl = intent.getStringExtra("redirectUrl") ?: return
-        val urlScheme = Constants.URL_SCHEME
+        // This callback scheme brings the user back to the host app's WebView after
+        // the bank app finishes an external authorization flow (for example Revolut).
+        val urlScheme = intent.getStringExtra("urlScheme") ?: return
         val token = intent.getStringExtra("token") ?: return
 
         // Instantiate WebView
@@ -34,7 +36,6 @@ class WebViewService : AppCompatActivity() {
         val webViewBridge = WebViewBridge(webView, this)
 
         webView.webViewClient = object : WebViewClient() {
-
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
@@ -64,7 +65,8 @@ class WebViewService : AppCompatActivity() {
             // Set content
             setContentView(webView)
 
-            // Load redirect URL with token
+            // Pass the host app callback scheme to payer-web so it can register the
+            // return URL for redirect-based bank authorization flows.
             val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token&redirect-url=$urlScheme"
 
             // Load the URL

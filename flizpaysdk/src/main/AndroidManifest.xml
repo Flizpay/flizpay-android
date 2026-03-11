@@ -15,7 +15,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="flizpaywebview" />
+                <data android:scheme="${flizpayUrlScheme}" />
             </intent-filter>
         </activity>
     </application>

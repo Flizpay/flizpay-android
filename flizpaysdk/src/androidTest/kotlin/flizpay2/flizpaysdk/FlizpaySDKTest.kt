@@ -18,6 +18,7 @@ class FlizpaySDKTest {
     private val testToken = "test-token"
     private val testAmount = "100.00"
     private val testRedirectUrl = "https://test.url"
+    private val testUrlScheme = "flizdemo://test?foo=bar"
 
     @Before
     fun setup() {
@@ -49,7 +50,7 @@ class FlizpaySDKTest {
     @Test
     fun test_successful_payment_initiation() {
         // Execute
-        FlizpaySDK.initiatePayment(mockContext, testToken, testAmount)
+        FlizpaySDK.initiatePayment(mockContext, testToken, testAmount, urlScheme = testUrlScheme)
 
         // Verify
         verify { mockContext.startActivity(any()) }
@@ -75,7 +76,7 @@ class FlizpaySDKTest {
         }
 
         // Execute
-        FlizpaySDK.initiatePayment(mockContext, testToken, testAmount) { error ->
+        FlizpaySDK.initiatePayment(mockContext, testToken, testAmount, urlScheme = testUrlScheme) { error ->
             capturedError = error
         }
 
@@ -92,11 +93,20 @@ class FlizpaySDKTest {
         every { mockContext.startActivity(capture(intentSlot)) } just Runs
 
         // Execute
-        FlizpaySDK.initiatePayment(mockContext, testToken, testAmount)
+        FlizpaySDK.initiatePayment(mockContext, testToken, testAmount, urlScheme = testUrlScheme)
 
         val capturedIntent = intentSlot.captured
 
         // Verify FLAG_ACTIVITY_NEW_TASK is set
         assertTrue(capturedIntent.flags and Intent.FLAG_ACTIVITY_NEW_TASK != 0)
+    }
+
+    @Test
+    fun test_url_scheme_is_added_to_intent_extras() {
+        // Execute
+        FlizpaySDK.initiatePayment(mockContext, testToken, testAmount, urlScheme = testUrlScheme)
+
+        // Verify
+        verify { anyConstructed<Intent>().putExtra("urlScheme", testUrlScheme) }
     }
 }
