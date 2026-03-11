@@ -7,18 +7,10 @@ import flizpay2.flizpaysdk.Constants
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
-import org.json.JSONArray
 
 
-class TransactionService(
-    apiUrl: String? = null,
-    private val baseUrl: String? = null
-) {
+class TransactionService {
     private val client = OkHttpClient()
-    
-    // Use provided URLs or fallback to production defaults
-    private val effectiveApiUrl: String = apiUrl?.takeIf { it.isNotEmpty() } ?: Constants.API_URL
-    private val effectiveBaseUrl: String = baseUrl?.takeIf { it.isNotEmpty() } ?: Constants.BASE_URL
 
     private fun Map<String, Any?>.toJsonObject(): JSONObject =
         JSONObject().apply {
@@ -34,7 +26,7 @@ class TransactionService(
         metadata: Map<String, Any?>? = null,
         completion: (Result<String>) -> Unit
     ) {
-        val url = "$effectiveApiUrl/transactions"
+        val url = "${Constants.API_URL}/transactions"
         val requestBody = JSONObject()
             .put("amount", amount)
             .put("currency", "EUR")

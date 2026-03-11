@@ -3,6 +3,7 @@ package flizpay2.flizpaysdk.lib
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.net.Uri
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -18,7 +19,9 @@ class WebViewService : AppCompatActivity() {
 
         // Get Intent Data
         val redirectUrl = intent.getStringExtra("redirectUrl") ?: return
-        val urlScheme = Constants.URL_SCHEME
+        // This callback scheme brings the user back to the host app's WebView after
+        // the bank app finishes an external authorization flow (for example Revolut).
+        val urlScheme = intent.getStringExtra("urlScheme") ?: return
         val token = intent.getStringExtra("token") ?: return
 
         // Instantiate WebView
@@ -34,7 +37,6 @@ class WebViewService : AppCompatActivity() {
         val webViewBridge = WebViewBridge(webView, this)
 
         webView.webViewClient = object : WebViewClient() {
-
             override fun shouldOverrideUrlLoading(
                 view: WebView?,
                 request: WebResourceRequest?
@@ -55,6 +57,13 @@ class WebViewService : AppCompatActivity() {
                 }
                 return false // Allow the WebView to load the URL
             }
+
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+                // Re-apply the bridge after each navigation so payer-web can close the
+                // activity even after redirects or full page loads.
+                webViewBridge.overrideWindowClose()
+            }
         }
 
 
@@ -64,14 +73,13 @@ class WebViewService : AppCompatActivity() {
             // Set content
             setContentView(webView)
 
-            // Load redirect URL with token
-            val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token&redirect-url=$urlScheme"
+            // Pass the host app callback scheme to payer-web so it can register the
+            // return URL for redirect-based bank authorization flows.
+            val encodedUrlScheme = Uri.encode(urlScheme)
+            val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token&redirect-url=$encodedUrlScheme"
 
             // Load the URL
             webView.loadUrl(redirectUrlWithJwtToken)
-
-            // Override window.close behavior if needed
-            webViewBridge.overrideWindowClose()
         }
     }
 }
