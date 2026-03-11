@@ -3,6 +3,7 @@ package flizpay2.flizpaysdk.lib
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.net.Uri
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
@@ -74,7 +75,8 @@ class WebViewService : AppCompatActivity() {
 
             // Pass the host app callback scheme to payer-web so it can register the
             // return URL for redirect-based bank authorization flows.
-            val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token&redirect-url=$urlScheme"
+            val encodedUrlScheme = Uri.encode(urlScheme)
+            val redirectUrlWithJwtToken = "$redirectUrl&jwt=$token&redirect-url=$encodedUrlScheme"
 
             // Load the URL
             webView.loadUrl(redirectUrlWithJwtToken)

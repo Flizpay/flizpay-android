@@ -1,6 +1,7 @@
 package flizpay2.flizpaysdk
 
 import android.content.Intent
+import android.net.Uri
 import android.webkit.WebView
 import flizpay2.flizpaysdk.lib.WebViewBridge
 import flizpay2.flizpaysdk.lib.WebViewService
@@ -49,7 +50,8 @@ class WebViewServiceTest {
 
     @Test
     fun test_URL_loading_with_token() {
-        val expectedUrl = "$testRedirectUrl&jwt=$testToken&redirect-url=$testUrlScheme"
+        val encodedUrlScheme = Uri.encode(testUrlScheme)
+        val expectedUrl = "$testRedirectUrl&jwt=$testToken&redirect-url=$encodedUrlScheme"
 
         // Simulate WebView loadUrl()
         every { mockWebView.loadUrl(any()) } just runs
