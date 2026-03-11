@@ -4,6 +4,7 @@ import flizpay2.flizpaysdk.lib.TransactionService
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkConstructor
+import io.mockk.unmockkConstructor
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.json.JSONObject
@@ -20,6 +21,7 @@ import java.util.concurrent.TimeUnit
 class TransactionServiceTest {
     private lateinit var mockWebServer: MockWebServer
     private lateinit var transactionService: TransactionService
+    private lateinit var originalApiUrl: String
     private val testToken = "test-token"
     private val testAmount = "100.00"
     @Volatile
@@ -34,13 +36,15 @@ class TransactionServiceTest {
         mockkConstructor(JSONObject::class)
         every { JSONObject().put(any<String>(), any<Any>()) } returns mockJsonObject
 
-        // Override API_URL constant for testing
+        originalApiUrl = Constants.API_URL
         Constants.API_URL = mockWebServer.url("/").toString().removeSuffix("/")
         transactionService = TransactionService()
     }
 
     @AfterEach
     fun tearDown() {
+        Constants.API_URL = originalApiUrl
+        unmockkConstructor(JSONObject::class)
         mockWebServer.shutdown()
     }
 
